@@ -7,10 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class ItemsService {
 
 constructor(private http: HttpClient) { }
-  getPrecies(items) {
-    return this.http.get(`https://www.albion-online-data.com/api/v2/stats/prices/${items}?locations=FortSterling,Lymhurst,Thetford,Martlock,Bridgewatch`);
+  getPrecies(items, ciudades) {
+    return this.http.get(`https://www.albion-online-data.com/api/v2/stats/prices/${items}?locations=${ciudades}`);
   }
   getItems() {
-    return this.http.get(`http://demo1163450.mockable.io/items`);
+    return this.http.get(`https://demo1163450.mockable.io/items`);
+  }
+  getCiudades() {
+    return this.http.get(` https://demo1163450.mockable.io/ciudades`);
   }
 }

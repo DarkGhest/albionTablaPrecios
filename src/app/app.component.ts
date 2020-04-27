@@ -14,10 +14,12 @@ export class AppComponent {
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   title = 'albion';
   toppings = new FormControl();
-
+  controlCiudades = new FormControl();
+  listaCiudades: any[];
   listaItems: any[];
   constructor(private sVAlbion: ItemsService) {
     this.getItems();
+    this.getICiudades();
   }
   selectedValue;
   get selected() {
@@ -30,7 +32,22 @@ export class AppComponent {
       newArray[i] = val[i].value;
     }
     let items: any = newArray.join(',');
-    this.getPrecies(items);
+    this.selectedValue = items;
+    this.getPrecies(this.selectedValue, this.selectedCiudades);
+  }
+  selectedCiudadesValue;
+  get selectedCiudades() {
+    return this.selectedCiudadesValue;
+  }
+  set selectedCiudades(val: any[]) {
+    let newArray = new Array();
+    for (let i = 0; i < val.length; i++) {
+      console.log(val[i]);
+      newArray[i] = val[i].value;
+    }
+    let items: any = newArray.join(',');
+    this.selectedCiudadesValue = items;
+    this.getPrecies(this.selectedValue, this.selectedCiudades);
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -44,8 +61,16 @@ export class AppComponent {
       }
     );
   }
-  getPrecies(items: string) {
-    this.sVAlbion.getPrecies(items).subscribe(
+  getICiudades() {
+    this.sVAlbion.getCiudades().subscribe(
+      (data: any[]) => {
+        console.log(data);
+        this.listaCiudades = data;
+      }
+    );
+  }
+  getPrecies(items: string, ciudades) {
+    this.sVAlbion.getPrecies(items, ciudades).subscribe(
       (data: any[]) => {
         console.log(data);
         this.ELEMENT_DATA = this.conversion(data);
