@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4 mb-4">
   <form>
     <div class="form-row">
       <div class="form-group col-md-3">
@@ -7,6 +7,8 @@
         </label>
         <mat-select [formControl]="toppings" multiple class="form-control"
         [(value)]="selectedItems">
+
+        <mat-select-search [formControl]="bankMultiFilterCtrl"></mat-select-search>
           <mat-option *ngFor="let topping of listaItems" [value]="topping">
             {{topping.name}}</mat-option>
         </mat-select>
@@ -35,9 +37,9 @@
     </div>
   </form>
   <!--TABLE-->
-  <div class="row">
-    <div class="col">
-      <table mat-table [dataSource]="dataSource" class="col-12">
+  <div class="row mt-4">
+    <div class="col" style="overflow-x: auto; width: 100%;">
+      <table mat-table [dataSource]="dataSource" class="col-12" class="tableScroll">
 
         <!-- Position Column -->
         <ng-container matColumnDef="position">

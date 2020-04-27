@@ -4,3 +4,6 @@
 .max-val{
   background-color: rgb(255, 122, 89);
 }
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding: 0px 5px 0px 5px;
+}

@@ -1,4 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.tableScroll {
+  width: 100%;
+}
+@media screen and (max-width: 600px) {
+  table {
+    width: 100%;
+    border-spacing: 0;
+  }
+  .tableScroll {
+    width: 900px;
+  }
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    display: block;
+  }
+
+  thead tr {
+    /* fallback */
+    width: 97%;
+    /* minus scroll bar width */
+    width: -webkit-calc(50% - 16px);
+    width: -moz-calc(100% - 16px);
+    width: calc(50 - 16px);
+  }
+
+  tr:after {
+    /* clearing float */
+    content: " ";
+    display: block;
+    visibility: hidden;
+    clear: both;
+  }
+
+  tbody {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  tbody td,
+  thead th {
+    width: calc(100% / 7); /* 19% is less than (100% / 5 cols) = 20% */
+    float: left;
+  }
+  .cdk-column-position{
+    width: 100px;
+    overflow: auto;
+  }
+}

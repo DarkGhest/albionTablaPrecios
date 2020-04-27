@@ -15,6 +15,8 @@ export class AppComponent {
   title = 'albion';
   toppings = new FormControl();
   controlCiudades = new FormControl();
+  /** control for the MatSelect filter keyword multi-selection */
+ public bankMultiFilterCtrl: FormControl = new FormControl();
   listaCiudades: any[];
   listaItems: any[];
   constructor(private sVAlbion: ItemsService) {
