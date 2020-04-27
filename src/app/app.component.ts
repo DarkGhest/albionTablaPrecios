@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'symbol2', 'symbol3'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'symbol2', 'symbol3', 'symbol4'];
   ELEMENT_DATA;
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   title = 'albion';
@@ -63,7 +63,8 @@ export class AppComponent {
           item: oldArray[index].item_id,
           [(oldArray[index].city === 'Fort Sterling') ? 'FortSterling' : oldArray[index].city]: oldArray[index].sell_price_min,
           min: '',
-          max: ''
+          max: '',
+          ganancia: -1
         });
         return row;
       }
@@ -78,12 +79,18 @@ export class AppComponent {
     return lastArray;
   }
   verificacion(oldArray: any[]) {
-    for (var i = 0; i < oldArray.length; i++) {
+    // tslint:disable-next-line: prefer-for-of
+    for ( var i = 0; i < oldArray.length; i++) {
+      // tslint:disable-next-line: prefer-const
       let newObject = Object.assign({}, oldArray[i]);
-      delete newObject['item'];
-      delete newObject['min'];
-      delete newObject['max'];
-      console.log('ajuste',newObject);
+      // tslint:disable-next-line: no-string-literal
+      delete newObject[ 'item' ];
+      // tslint:disable-next-line: no-string-literal
+      delete newObject[ 'min' ];
+      // tslint:disable-next-line: no-string-literal
+      delete newObject[ 'max' ];
+      delete newObject[ 'ganancia' ];
+      console.log('ajuste', newObject);
       let minValue = 9999999;
       let minposicion: any;
       let maxValue = -1;
@@ -91,7 +98,7 @@ export class AppComponent {
       // tslint:disable-next-line: prefer-const
       // tslint:disable-next-line: forin
       for (let variable in newObject) {
-        //console.log(newObject[variable]);
+        // console.log(newObject[variable]);
         if (newObject[variable] < minValue) {
           console.log('Anterior minimo: ' + newObject[variable] + ', nuevo minimo: ' + newObject[variable]);
           minValue = newObject[variable];
@@ -105,8 +112,9 @@ export class AppComponent {
       }
       oldArray[i].min = minValue;
       oldArray[i].max = maxValue;
+      oldArray[i].ganancia = maxValue - minValue;
     }
-    console.log("busca menores",oldArray);
+    console.log( 'busca menores', oldArray);
     return oldArray;
   }
 }
