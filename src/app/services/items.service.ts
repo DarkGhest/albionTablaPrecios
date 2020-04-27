@@ -11,6 +11,6 @@ constructor(private http: HttpClient) { }
     return this.http.get(`https://www.albion-online-data.com/api/v2/stats/prices/${items}?locations=FortSterling,Lymhurst,Thetford,Martlock,Bridgewatch`);
   }
   getItems() {
-    return this.http.get(`http://demo1163450.mockable.io/items`);
+    return this.http.get(`https://demo1163450.mockable.io/items`);
   }
 }
