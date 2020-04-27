@@ -21,33 +21,42 @@ export class AppComponent {
     this.getItems();
     this.getICiudades();
   }
-  selectedValue;
-  get selected() {
-    return this.selectedValue;
+  selectedItemsValue: any[];
+  joinItems: string;
+  get selectedItems() {
+    return this.selectedItemsValue;
   }
-  set selected(val: any[]) {
-    let newArray = new Array();
+  set selectedItems(val: any[]) {
+
+    this.selectedItemsValue = val;
+
+    const newArray = new Array();
     for (let i = 0; i < val.length; i++) {
       console.log(val[i]);
       newArray[i] = val[i].value;
     }
-    let items: any = newArray.join(',');
-    this.selectedValue = items;
-    this.getPrecies(this.selectedValue, this.selectedCiudades);
+    const items: any = newArray.join(',');
+    this.joinItems = items;
+
+    this.getPrecies(this.joinItems, this.joinCiudades);
   }
-  selectedCiudadesValue;
+  selectedCiudadesValue: any[];
+  joinCiudades: string;
   get selectedCiudades() {
     return this.selectedCiudadesValue;
   }
   set selectedCiudades(val: any[]) {
-    let newArray = new Array();
+    this.selectedCiudadesValue = val;
+
+    const newArray = new Array();
     for (let i = 0; i < val.length; i++) {
       console.log(val[i]);
       newArray[i] = val[i].value;
     }
-    let items: any = newArray.join(',');
-    this.selectedCiudadesValue = items;
-    this.getPrecies(this.selectedValue, this.selectedCiudades);
+    const items: any = newArray.join(',');
+    this.joinCiudades = items;
+
+    this.getPrecies(this.joinItems, this.joinCiudades);
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -6,7 +6,7 @@
           <mat-label>Selccionar item</mat-label>
         </label>
         <mat-select [formControl]="toppings" multiple class="form-control"
-        [(value)]="selected">
+        [(value)]="selectedItems">
           <mat-option *ngFor="let topping of listaItems" [value]="topping">
             {{topping.name}}</mat-option>
         </mat-select>
