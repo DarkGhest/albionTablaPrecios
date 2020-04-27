@@ -74,7 +74,7 @@ export class AppComponent {
       lastArray[i++] = newArray[variable];
     }
 
-    this.verificacion(lastArray);
+    lastArray = this.verificacion(lastArray);
     return lastArray;
   }
   verificacion(oldArray: any[]) {
@@ -103,10 +103,11 @@ export class AppComponent {
           maxposicion = variable;
         }
       }
-      oldArray[i].min = minposicion;
-      oldArray[i].max = maxposicion;
+      oldArray[i].min = minValue;
+      oldArray[i].max = maxValue;
     }
     console.log("busca menores",oldArray);
+    return oldArray;
   }
 }
 export interface PeriodicElement {

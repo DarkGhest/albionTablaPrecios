@@ -38,29 +38,49 @@
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Bridgewatch </th>
-          <td mat-cell *matCellDef="let element"> {{element.Bridgewatch}} </td>
+          <td mat-cell *matCellDef="let element"
+          [ngClass]="{
+            'min-val': element.min === element.Bridgewatch ,
+            'max-val': element.max === element.Bridgewatch
+          }"> {{element.Bridgewatch}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="weight">
           <th mat-header-cell *matHeaderCellDef> FortSterling</th>
-          <td mat-cell *matCellDef="let element"> {{element.FortSterling}} </td>
+          <td mat-cell *matCellDef="let element"
+          [ngClass]="{
+            'min-val': element.min === element.FortSterling ,
+            'max-val': element.max === element.FortSterling
+          }"> {{element.FortSterling}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="symbol">
           <th mat-header-cell *matHeaderCellDef> Lymhurst </th>
-          <td mat-cell *matCellDef="let element"> {{element.Lymhurst}} </td>
+          <td mat-cell *matCellDef="let element"
+          [ngClass]="{
+            'min-val': element.min === element.Lymhurst ,
+            'max-val': element.max === element.Lymhurst
+          }"> {{element.Lymhurst}} </td>
         </ng-container>
         <!-- Symbol Column -->
         <ng-container matColumnDef="symbol2">
           <th mat-header-cell *matHeaderCellDef> Thetford </th>
-          <td mat-cell *matCellDef="let element"> {{element.Thetford}} </td>
+          <td mat-cell *matCellDef="let element"
+          [ngClass]="{
+            'min-val': element.min === element.Thetford ,
+            'max-val': element.max === element.Thetford
+          }"> {{element.Thetford}} </td>
         </ng-container>
         <!-- Symbol Column -->
         <ng-container matColumnDef="symbol3">
           <th mat-header-cell *matHeaderCellDef> Martlock </th>
-          <td mat-cell *matCellDef="let element"> {{element.Martlock}} </td>
+          <td mat-cell *matCellDef="let element"
+          [ngClass]="{
+            'min-val': element.min === element.Martlock ,
+            'max-val': element.max === element.Martlock
+          }"> {{element.Martlock}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
